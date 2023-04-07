@@ -5,8 +5,7 @@ import com.grooming.assignment.week1.q1.enums.TECH_STACK;
 public class Message {
     public static String EXP_NOT_ENOUGH_MESSAGE = "Your experience does not qualify for the job. Minimum required experience for the role of %s is %s"; 
     public static String EXPECTED_SALARY_MESSAGE = "You're qualified for the role of %s. You can expect a salary of %s "; 
-    public static String NAME_NOT_VALID_MESSAGE = "Name should not contain any digits or special characters or empty or whitespaces";
-    public static String TECHSTACK_NOT_VALID_MESSAGE = "Please enter a job role from %s only";
+    public static String TECHSTACK_NOT_VALID_MESSAGE = "We don't have any openings for the tech stack you specified. You can choose a tech-stack from %s only";
     public static String PACKAGE_NOT_VALID_EXCEPTION = "Please enter a correct & valid package"; 
 
 

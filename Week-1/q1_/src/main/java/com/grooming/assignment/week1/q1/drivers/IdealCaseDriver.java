@@ -11,28 +11,25 @@ public class IdealCaseDriver {
         
         Scanner scannerObj = new Scanner(System.in);
             
-        String firstname,lastName, techStack,currentPackage;
+        String techStack,currentPackage;
         float yearsOfExperience;
     
-    
-        System.out.println("Please Enter your first Name");
-        firstname = scannerObj.nextLine();
-        System.out.println("Please Enter your last Name (Optional)");
-        lastName = scannerObj.nextLine();
         System.out.println("Please Enter your tech stack");
         techStack = scannerObj.nextLine();
         System.out.println("Please Enter your current package");
         currentPackage = scannerObj.nextLine(); 
         System.out.println("Please Enter your years of experience");
         yearsOfExperience = scannerObj.nextFloat();
-        // scannerObj.next();
+
         
         try {
           
-            JobApplicant jobApplicant = new JobApplicant(firstname, lastName, techStack, yearsOfExperience,currentPackage);
+            JobApplicant jobApplicant = new JobApplicant(techStack, yearsOfExperience,currentPackage);
             Message.getExpectedSalaryMessage(jobApplicant.getTechStack(), jobApplicant.getCurrentPackage());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
+        }finally{
+            scannerObj.close();
         }
     }
 

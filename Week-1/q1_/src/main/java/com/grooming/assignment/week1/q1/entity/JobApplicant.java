@@ -6,13 +6,11 @@ import com.grooming.assignment.week1.q1.messages.Message;
 import com.grooming.assignment.week1.q1.utility.ValidationUtility;
 
 public class JobApplicant {
-    private String name;
     private TECH_STACK techStackApplyingFor;
     private float yearsOfExperience;
     private int currentPackage;
 
-    public JobApplicant(String firstName, String lastName, String techStackApplyingFor, float yearsOfExperience, String currentPackage){
-        setName(firstName, lastName);
+    public JobApplicant(String techStackApplyingFor, float yearsOfExperience, String currentPackage){
         setTechStackApplyingFor(techStackApplyingFor);
         setYearsOfExperience(yearsOfExperience);
         setCurrentPackage(currentPackage);
@@ -26,12 +24,8 @@ public class JobApplicant {
       return this.currentPackage;
     }
 
-    private void setName(String firstName, String lastName){
-       this.name = ValidationUtility.validateJobApplicantName(firstName, lastName);
-    }
-
     private void setTechStackApplyingFor(String techStackApplyingFor){
-       this.techStackApplyingFor = ValidationUtility.validateJobRole(techStackApplyingFor); 
+       this.techStackApplyingFor = ValidationUtility.validateTechStack(techStackApplyingFor); 
     }
 
     private void setYearsOfExperience(float yearsOfExperience){
