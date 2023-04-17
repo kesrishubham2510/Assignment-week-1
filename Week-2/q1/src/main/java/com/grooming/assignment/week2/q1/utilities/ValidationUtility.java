@@ -20,7 +20,7 @@ public class ValidationUtility {
         try {
             joiningDate = LocalDate.parse(date, formatter);
             if(joiningDate.isAfter(LocalDate.now()))
-            throw new InvalidDateFormatException(Constant.INVALID_DATE_EXCEPTION_MESSAGE);
+             throw new InvalidDateFormatException(Constant.INVALID_DATE_EXCEPTION_MESSAGE);
         }catch(InvalidDateFormatException ex){
             throw ex;
         } 
@@ -32,37 +32,55 @@ public class ValidationUtility {
 
     public static EMPLOYMENT_TYPE validateEmploymentType(String employmentType){
           EMPLOYMENT_TYPE employment=null;
+          
+            switch(employmentType.toUpperCase()){
 
-          try {
-            employment = EMPLOYMENT_TYPE.valueOf(EMPLOYMENT_TYPE.class, employmentType);
-          }catch (Exception ex) {
-             var messageProcessor = new MessageProcessor();
-             throw new InvalidEnumerationTypeException(messageProcessor.getEmploymentTypeErrorMessage());
-          }
+               case "CONTRACT": employment = EMPLOYMENT_TYPE.CONTRACT;
+                                break;
+               case "FULL TIME": employment = EMPLOYMENT_TYPE.FULL_TIME;
+                                  break;
+               default: {
+                          var messageProcessor = new MessageProcessor();
+                          throw new InvalidEnumerationTypeException(messageProcessor.getEmploymentTypeErrorMessage());                    
+                        }
+            }
           return employment;
     }
 
     public static ROLE validateRoleType(String roleType){
           ROLE role=null;
 
-          try {
-            role = EMPLOYMENT_TYPE.valueOf(ROLE.class, roleType);
-          }catch (Exception ex) {
-             var messageProcessor = new MessageProcessor();
-             throw new InvalidEnumerationTypeException(messageProcessor.getRoleErrorMessage());
-          }
+          switch(roleType.toUpperCase()){
+
+            case "ASSOCIATE": role = ROLE.ASSOCIATE;
+                               break;
+            case "SENIOR ASSOCIATE": role = ROLE.SENIOR_ASSOCIATE;
+                               break;
+            default: {
+                       var messageProcessor = new MessageProcessor();
+                       throw new InvalidEnumerationTypeException(messageProcessor.getRoleErrorMessage());                    
+              }
+         }
           return role;
     }
 
     public static STATUS validateStatusType(String statusType){
           STATUS status=null;
 
-          try {
-            status = STATUS.valueOf(STATUS.class, statusType);
-          }catch (Exception ex) {
-             var messageProcessor = new MessageProcessor();
-             throw new InvalidEnumerationTypeException(messageProcessor.getStatusErrorMessage());
-          }
+          switch(statusType.toUpperCase()){
+
+            case "ACTIVE": status = STATUS.ACTIVE;
+                               break;
+            case "SERVING NOTICE": status = STATUS.SERVING_NOTICE;
+                               break;                   
+            case "EXIT": status = STATUS.EXIT;
+                               break;
+
+            default: {
+                       var messageProcessor = new MessageProcessor();
+                       throw new InvalidEnumerationTypeException(messageProcessor.getStatusErrorMessage());                    
+              }
+         }
           return status;
     }
 }

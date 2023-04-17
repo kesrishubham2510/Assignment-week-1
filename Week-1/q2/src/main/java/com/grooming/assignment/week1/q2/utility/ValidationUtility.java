@@ -2,12 +2,9 @@ package com.grooming.assignment.week1.q2.utility;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.function.Predicate;
-import java.util.List;
 import java.util.Arrays;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 
 import com.grooming.assignment.week1.q2.exceptions.InvalidAadharException;
 import com.grooming.assignment.week1.q2.exceptions.InvalidDateOfBirthException;

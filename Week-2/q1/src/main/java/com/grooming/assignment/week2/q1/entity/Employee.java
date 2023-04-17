@@ -29,7 +29,7 @@ public class Employee {
     String roleType,
     String statusType){
 
-        setEmployeeId(employeeName);
+        setEmployeeId();
         setEmployeeName(employeeName);
         setEmploymentType(employmentType);
         setJoiningDate(joiningDate);
@@ -38,7 +38,7 @@ public class Employee {
 
     }
 
-    public void setEmployeeId(String employeeId) {
+    public void setEmployeeId() {
         this.employeeId = String.valueOf(Employee.getId());
 
     }
