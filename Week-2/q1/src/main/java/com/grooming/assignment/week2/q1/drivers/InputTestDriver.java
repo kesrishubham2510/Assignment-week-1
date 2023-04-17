@@ -12,5 +12,5 @@ public class InputTestDriver {
         }
 
         return message;
-    }
+    } 
 }
