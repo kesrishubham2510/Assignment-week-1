@@ -8,7 +8,7 @@ import com.grooming.assignment.week2.q1.enums.EMPLOYMENT_TYPE;
 import com.grooming.assignment.week2.q1.enums.ROLE;
 import com.grooming.assignment.week2.q1.enums.STATUS;
 import com.grooming.assignment.week2.q1.exceptions.InvalidDateFormatException;
-import com.grooming.assignment.week2.q1.exceptions.InvalidEmployementTypeException;
+import com.grooming.assignment.week2.q1.exceptions.InvalidEnumerationTypeException;
 
 public class ValidationUtility {
     
@@ -37,7 +37,7 @@ public class ValidationUtility {
             employment = EMPLOYMENT_TYPE.valueOf(EMPLOYMENT_TYPE.class, employmentType);
           }catch (Exception ex) {
              var messageProcessor = new MessageProcessor();
-             throw new InvalidEmployementTypeException(messageProcessor.getEmploymentTypeErrorMessage());
+             throw new InvalidEnumerationTypeException(messageProcessor.getEmploymentTypeErrorMessage());
           }
           return employment;
     }
@@ -49,7 +49,7 @@ public class ValidationUtility {
             role = EMPLOYMENT_TYPE.valueOf(ROLE.class, roleType);
           }catch (Exception ex) {
              var messageProcessor = new MessageProcessor();
-             throw new InvalidEmployementTypeException(messageProcessor.getRoleErrorMessage());
+             throw new InvalidEnumerationTypeException(messageProcessor.getRoleErrorMessage());
           }
           return role;
     }
@@ -61,7 +61,7 @@ public class ValidationUtility {
             status = STATUS.valueOf(STATUS.class, statusType);
           }catch (Exception ex) {
              var messageProcessor = new MessageProcessor();
-             throw new InvalidEmployementTypeException(messageProcessor.getStatusErrorMessage());
+             throw new InvalidEnumerationTypeException(messageProcessor.getStatusErrorMessage());
           }
           return status;
     }

@@ -7,9 +7,6 @@ import com.grooming.assignment.week2.q1.enums.ROLE;
 import com.grooming.assignment.week2.q1.enums.STATUS;
 import com.grooming.assignment.week2.q1.utilities.ValidationUtility;
 
-import lombok.Getter;
-
-@Getter
 public class Employee {
 
     private static int id;
@@ -29,20 +26,20 @@ public class Employee {
     String employeeName,
     String joiningDate,
     String employmentType,
-    String role,
-    String status){
+    String roleType,
+    String statusType){
 
         setEmployeeId(employeeName);
         setEmployeeName(employeeName);
         setEmploymentType(employmentType);
         setJoiningDate(joiningDate);
-        setRole(role);
-        setStatus(status);
+        setRole(roleType);
+        setStatus(statusType);
 
     }
 
     public void setEmployeeId(String employeeId) {
-        this.employeeId = String.valueOf(Employee.getEmployeeId());
+        this.employeeId = String.valueOf(Employee.getId());
 
     }
 
@@ -66,8 +63,31 @@ public class Employee {
         this.status = ValidationUtility.validateStatusType(statusType);
     }
     
-    public static int getEmployeeId(){
+    public static int getId(){
         return Employee.id;
     }
 
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public LocalDate getJoiningDate() {
+        return joiningDate;
+    }
+
+    public EMPLOYMENT_TYPE getEmploymentType() {
+        return employmentType;
+    }
+
+    public ROLE getRole() {
+        return role;
+    }
+
+    public STATUS getStatus() {
+        return status;
+    }
 }
