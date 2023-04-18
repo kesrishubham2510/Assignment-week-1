@@ -1,6 +1,6 @@
 package com.grooming.assignment.week2.q3;
 
-public class CustomSorter<T>{
+public class GeneralSorter<T extends Comparable<T>>{
 
     public void sort(T[] array){
         
@@ -8,12 +8,12 @@ public class CustomSorter<T>{
         int i,j,len=array.length;
         T temp;
 
-        for(i=0;i<len;i++){
-            for(j=1;j<len;j++){
-                if( ((Comparable)array[j-1]).compareTo(array[j]) == 1){
+        for(i=0;i<len-1;i++){
+            for(j=i+1;j<len;j++){
+                if((array[i]).compareTo(array[j]) > 0){
                     temp = array[j];
-                    array[j] = array[j-1];
-                    array[j-1] = temp;
+                    array[j] = array[i];
+                    array[i] = temp;
                 }
             }
         }

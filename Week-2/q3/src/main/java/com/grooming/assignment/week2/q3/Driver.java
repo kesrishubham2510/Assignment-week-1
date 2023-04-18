@@ -11,7 +11,7 @@ public class Driver {
         integerList[4] = 9;
         integerList[5] = 7;
 
-        CustomSorter<Integer> customSorter = new CustomSorter<>();
+        GeneralSorter<Integer> customSorter = new GeneralSorter<>();
         customSorter.sort(integerList);
         
         String[] striingList = new String[6];
@@ -22,7 +22,18 @@ public class Driver {
         striingList[4] = "g";
         striingList[5] = "f";
 
-        CustomSorter<String> customSorterString = new CustomSorter<>();
+        GeneralSorter<String> customSorterString = new GeneralSorter<>();
         customSorterString.sort(striingList);
+       
+        Character[] charList = new Character[6];
+        charList[0] = 'a';
+        charList[1] = 'd';
+        charList[2] = 'b';
+        charList[3] = 'e';
+        charList[4] = 'g';
+        charList[5] = 'f';
+
+        GeneralSorter<Character> customSorterCharacter = new GeneralSorter<>();
+        customSorterCharacter.sort(charList);
     }
 }
