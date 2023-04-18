@@ -1,0 +1,5 @@
+Programmer 1,23-01-2010,contract,Associate,Development
+Programmer 2,23-01-2008,contract,senior Associate,Development
+Analyst 1,23-01-2009,full time,Associate,analysis
+Senior analyst,23-01-2013,contract,Senior Associate,Analysis
+Accountant,23-01-2011,full time,Associate,accounts
