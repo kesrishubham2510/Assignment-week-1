@@ -29,23 +29,42 @@ public class EmployeeRepository {
          
          this.employees.add(employee);
          this.ids.add(employee.getEmployeeId());
+        //  System.out.println("Employee count:- "+this.employees.size());
+         //   System.out.println(employee);
+        //  System.out.println("The employee id:- "+employee.getEmployeeId()+" has been successfully added");
     }
 
     public void displayEmployee(String employeeId) throws Exception{
         if(employees==null)
          throw new Exception("The employee list is not instantiated");
+        if(employees.isEmpty() || ids.isEmpty())
+         throw new Exception("The employee list is empty");
 
         if(ids.contains(employeeId))
-         System.out.println(employees.stream().filter(employee-> employee.getEmployeeId() == employeeId).findFirst().get()); 
+         System.out.println(employees.stream().filter(employee-> employee.getEmployeeId().equalsIgnoreCase(employeeId)).findAny().get()); 
         else 
          throw new EmployeeNotFoundException("No employee with Id:-"+employeeId+" was found in the system");
-          
+               
     }
     
+    public void displayEmployees() throws Exception{
+        System.out.println("Displaying employees.... ");
+
+        if(employees.isEmpty() || ids.isEmpty())
+        throw new Exception("The employee list is empty");
+
+        for(int i=0;i<employees.size();i++)
+         System.out.println(employees.get(i));
+    }
+
     public List<Employee> getEmployeeBasedOnRole(String roleType) throws Exception{
         if(employees==null)
          throw new Exception("The employee list is not instantiated");
-      
+
+        if(employees.isEmpty() || ids.isEmpty())
+         throw new Exception("The employee list is empty");
+ 
+         
          ROLE filterRole = ValidationUtility.validateRoleType(roleType);
 
          return employees.stream().filter(employee-> employee.getRole() == filterRole).collect(Collectors.toList());
@@ -55,6 +74,9 @@ public class EmployeeRepository {
         if(employees==null)
          throw new Exception("The employee list is not instantiated");
         
+        if(employees.isEmpty() || ids.isEmpty())
+         throw new Exception("The employee list is empty");
+
         Predicate<Employee> filterCondition = (employee)-> employee.getJoiningDate().isBefore(LocalDate.now().minusYears(minimumExperience));
          
         return employees.stream().filter(filterCondition).collect(Collectors.toList());

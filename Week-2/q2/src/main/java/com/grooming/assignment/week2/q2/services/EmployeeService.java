@@ -1,7 +1,5 @@
 package com.grooming.assignment.week2.q2.services;
 
-import java.util.List;
-
 import com.grooming.assignment.week2.q2.entity.Employee;
 import com.grooming.assignment.week2.q2.repositories.EmployeeRepository;
 
@@ -13,21 +11,42 @@ public class EmployeeService {
         this.employeeRepository = new EmployeeRepository();
     }
 
-    public void addEmployee(String employeeName, String joiningDate, String employmentType, String roleType, String statusType) throws Exception{
-        Employee employee = new Employee(employeeName, joiningDate, employmentType, roleType, statusType);
+    public void addEmployee(String employeeName, String joiningDate, String employmentType, String roleType, String domainType) throws Exception{
+        Employee employee = new Employee(employeeName, joiningDate, employmentType, roleType, domainType);
         employeeRepository.addEmployee(employee);
     }
 
     public void displayEmployeeDetails(String employeeId) throws Exception{
-       employeeRepository.displayEmployee(employeeId);
+        System.out.println("displaying employee "+employeeId);
+        employeeRepository.displayEmployee(employeeId);
     }
 
-    public List<Employee> getAllEmployees(String roleType) throws Exception{
-        return employeeRepository.getEmployeeBasedOnRole(roleType);
+    public void displayAllEmployees() throws Exception{
+        employeeRepository.displayEmployees();
     }
 
-    public List<Employee> getAllEmployees(long minimumYearsOfExperience) throws Exception{
-       return employeeRepository.getEmployeeBasedOnExperience(minimumYearsOfExperience);
+    public void getAllEmployees(String roleType) throws Exception{
+        System.out.println("All employees having role:- "+roleType);
+        employeeRepository.getEmployeeBasedOnRole(roleType).forEach(employee-> {
+            try {
+                employeeRepository.displayEmployee(employee.getEmployeeId());
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        });
+    }
+    
+    public void getAllEmployees(long minimumYearsOfExperience) throws Exception{
+        System.out.println("All employees having atleast "+minimumYearsOfExperience+" years of experience :- ");
+        employeeRepository.getEmployeeBasedOnExperience(minimumYearsOfExperience).forEach(employee-> {
+            try {
+                employeeRepository.displayEmployee(employee.getEmployeeId());
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        });;
     }
 
 }
