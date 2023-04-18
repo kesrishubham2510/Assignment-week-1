@@ -37,7 +37,8 @@ public class EmployeeRepository {
          throw new Exception("The employee list is not instantiated");
         
         if(ids.contains(employeeId)){
-            employees.removeIf(employee-> employee.getEmployeeId() == employeeId);
+            Employee existingEmployee = employees.stream().filter(employee-> employee.getEmployeeId()==employeeId).findFirst().get();
+            existingEmployee.setStatus("exit");
             System.out.println("Employee with id:- "+employeeId+" has been successfully deleted");
         }
         else
