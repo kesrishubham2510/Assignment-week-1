@@ -40,7 +40,7 @@ public class Employee {
 
     public void setEmployeeId() {
         this.employeeId = String.valueOf(Employee.getId());
-
+        Employee.id++;
     }
 
     public void setEmployeeName(String employeeName) {
