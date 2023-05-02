@@ -9,13 +9,14 @@ import com.grooming.assignment.week4.q1.enums.Category;
 
 public class ProductData {
     
-    private static int counter;
+    private int NO_OF_ITEMS;
+    private int counter;
     private static int oddSwitch;
     private List<Product> products;
     private Category[] categories;
 
     private Supplier<Product> productGenerator = ()-> {
-        Product product = new Product("", false, "tv");
+        Product product = new Product(String.valueOf(NO_OF_ITEMS),"", false, "tv");
        
         product.setName("product@"+product.getId());
         product.setCategory(categories[counter%(categories.length)].toString());
@@ -25,7 +26,7 @@ public class ProductData {
 
         if(counter==0)
          oddSwitch = (oddSwitch+1)%2;
-
+        NO_OF_ITEMS--;
         return product;
     };
 
@@ -34,6 +35,7 @@ public class ProductData {
         oddSwitch=0;
         products = new ArrayList<>();
         categories = Category.values();
+        this.NO_OF_ITEMS = noOfItems;
         populateProducts(noOfItems);
     }
 
@@ -45,7 +47,4 @@ public class ProductData {
         for(int i=0;i<noOfItems;i++)
          products.add(productGenerator.get());
     }
-
-    
-
 }
